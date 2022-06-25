@@ -1,0 +1,18 @@
+version: "3.9"
+services:
+  db:
+    container_name: "mysql"
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_DATABASE: vslab
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: vs
+      MYSQL_PASSWORD: password
+    ports:
+      - "3307:3306"
+    volumes:
+      - db:/var/lib/mysql
+volumes:
+  db:
