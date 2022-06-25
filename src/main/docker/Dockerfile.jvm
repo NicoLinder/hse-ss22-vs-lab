@@ -8,6 +8,7 @@
 # Then, build the image with:
 #
 # docker build -f src/main/docker/Dockerfile.jvm -t quarkus/vs-lab-jvm .
+# docker build -f src/main/docker/Dockerfile.jvm -t niliit/hse-ss22-vs-lab-backend .
 #
 # Then run the container using:
 #

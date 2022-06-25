@@ -14,5 +14,19 @@ services:
       - "3307:3306"
     volumes:
       - db:/var/lib/mysql
+
+  backend:
+    container_name: "quarkus-app"
+    image: niliit/hse-ss22-vs-lab-backend
+    restart: always
+    environment:
+      QUARKUS_DATASOURCE_JDBC_URL: jdbc:mysql://db:3306/vslab
+      QUARKUS_DATASOURCE_USERNAME: vs
+      QUARKUS_DATASOURCE_PASSWORD: password
+    ports:
+      - "8081:8081"
+    depends_on:
+      - db
+
 volumes:
   db:
