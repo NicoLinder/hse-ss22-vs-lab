@@ -4,6 +4,36 @@ This project uses Quarkus, the Supersonic Subatomic Java Framework.
 
 If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .
 
+## Building a docker container
+A docker container running the backend and the database can be built using the docker-compose file in this directory.
+
+## Building a docker image for the backend
+
+The dockerfile for the backend was already provided by the quarkus framework, only small changes had to be made 
+in order to make it work. I used the Dockerfile.jvm, which builds the backend to run on a normal JVM, but Quarkus
+also provides other options like native mode, which is supposed to use less resources and start much faster.
+
+To build a JVM container, run  
+```
+./gradlew build
+```
+then
+```
+docker build -f src/main/docker/Dockerfile.jvm -t niliit/hse-ss22-vs-lab-backend .
+```
+
+## Configure exposed port
+The port used by the backend can be configured in the docker-compose.yml file.
+Just set the QUARKUS_HTTP_PORT environment variable to the desired port and adjust the port mapping
+for the docker container accordingly.
+
+## API Documentation
+
+Swagger-UI is reachable under
+```
+localhost:8080/q/swagger-ui/#/ 
+```
+
 ## Running the application in dev mode
 
 You can run your application in dev mode that enables live coding using:
